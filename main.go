@@ -4,7 +4,6 @@ import (
 	DB "application-web/DB"
 	"application-web/models"
 	"application-web/routes"
-	"fmt"
 	"log"
 	"net/http"
 
@@ -18,8 +17,6 @@ func main() {
 	}
 	DB.DbConnection()
 	DB.Conn.AutoMigrate(&models.Driver{}, &models.Address{}, &models.FieldsDocuments{})
-	fmt.Println("TA RODANDO PORRA")
 	routes.CarregaRotas()
 	http.ListenAndServe(":8000", nil)
-	fmt.Println("TA RODANDO PORRA")
 }
