@@ -1,0 +1,89 @@
+{{define "Edit"}}
+
+{{template "_head"}}
+
+{{template "_menu"}}
+
+<div class="container">
+
+    <body>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-5">Editando Driver</h1>
+                <p class="lead">Insira os dados para atualizar ou editar</p>
+            </div>
+        </div>
+        <form method="POST" action="update">
+            <input type="hidden" name="id" value="{{.UserID}}">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" name="nome" class="form-control" value="{{.Name}}" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="descricao">Placa:</label>
+                        <input type="text" name="descricao" class="form-control" value="{{.Plate}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="preco">Contato:</label>
+                        <input type="text" name="preco" class="form-control" step="0.01" value="{{.Contact}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">Status:</label>
+                        <input type="text" name="quantidade" class="form-control" value="{{.Status}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">CNH:</label>
+                        <input type="text" name="quantidade" class="form-control" value="{{.CnhDocComplete}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">RG:</label>
+                        <input type="text" name="quantidade" class="form-control" value="{{.RgDocComplete}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">Modelo do caminhão:</label>
+                        <input type="text" name="quantidade" class="form-control" value="{{.CarModel}}">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" value="salvar" class="btn btn-success">Atualizar</button>
+            <a class="btn btn-info" href="/">Voltar</a>
+        </form>
+    </body>
+
+</html>
+</div>
+</body>
+
+</html>
+
+{{end}}
