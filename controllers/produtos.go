@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"application-web/models"
-	"fmt"
 	"net/http"
 	"text/template"
 )
@@ -11,14 +10,19 @@ var temp = template.Must(template.ParseGlob("templates/*.html"))
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	allDrivers := models.GetAllDrivers()
-	fmt.Println(allDrivers)
 	temp.ExecuteTemplate(w, "Index", allDrivers)
 }
 
 func Edit(w http.ResponseWriter, r *http.Request) {
 	driverId := r.URL.Query().Get("id")
 	driver := models.EditDriver(driverId)
-	temp.ExecuteTemplate(w, "Edit", driver)
+	verify := driver.FieldsDocuments.DriverID
+	if len(verify) == 0 {
+		temp.ExecuteTemplate(w, "Create", driver)
+	} else {
+		temp.ExecuteTemplate(w, "Edit", driver)
+	}
+
 }
 
 /*func Update(w http.ResponseWriter, r *http.Request) {
