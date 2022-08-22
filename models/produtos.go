@@ -1,7 +1,7 @@
 package models
 
 import (
-	DB "application-web/DB"
+	DB "application-web/db"
 	"time"
 
 	"github.com/google/uuid"
@@ -139,6 +139,31 @@ func GetAllDrivers() []Driver {
 	}
 
 	return drivers
+}
+func GetDriversNoDoc() []Driver {
+	db := DB.Conn
+
+	var driversNoDoc []Driver
+
+	err := db.Raw("SELECT * FROM drivers A WHERE A.user_id NOT IN(SELECT driver_id FROM fields_documents);").Find(&driversNoDoc).Error
+	if err != nil {
+		panic(err.Error())
+	}
+
+	return driversNoDoc
+}
+
+func GetDriversWithDoc() []Driver {
+	db := DB.Conn
+
+	var driversDoc []Driver
+
+	err := db.Raw("SELECT * FROM drivers A WHERE A.user_id IN(SELECT driver_id FROM fields_documents);").Find(&driversDoc).Error
+	if err != nil {
+		panic(err.Error())
+	}
+
+	return driversDoc
 }
 
 func EditDriver(user_id string) Driver {

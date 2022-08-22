@@ -12,6 +12,20 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	allDrivers := models.GetAllDrivers()
 	temp.ExecuteTemplate(w, "Index", allDrivers)
 }
+func Decision(w http.ResponseWriter, r *http.Request) {
+	oi := "oi"
+	temp.ExecuteTemplate(w, "Decision", oi)
+}
+
+func DecisionSemDocs(w http.ResponseWriter, r *http.Request) {
+	driverNoDoc := models.GetDriversNoDoc()
+	temp.ExecuteTemplate(w, "IndexSemDocs", driverNoDoc)
+}
+
+func DecisionWithDocs(w http.ResponseWriter, r *http.Request) {
+	driverWithDoc := models.GetDriversWithDoc()
+	temp.ExecuteTemplate(w, "Index", driverWithDoc)
+}
 
 func Edit(w http.ResponseWriter, r *http.Request) {
 	driverId := r.URL.Query().Get("id")

@@ -1,7 +1,7 @@
 package main
 
 import (
-	DB "application-web/DB"
+	DB "application-web/db"
 	"application-web/models"
 	"application-web/routes"
 	"log"
