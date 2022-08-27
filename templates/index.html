@@ -1,42 +1,40 @@
-{{define "Index"}}
+{{define "Decision"}}
 
 {{template "_head"}}
 
 {{template "_menu"}}
-
 <body>
-    <div class="container">
-        <section class="card">
-            <div>
-                <table class="table table-striped table-hover mb-0">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Plate</th>
-                            <th>Contact</th>
-                            <th>Status</th>
-                            <th>CNH</th>
-                            <th>RG</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{range .}}
-                        <tr>                        
-                            <td>{{.Name}}</td>
-                            <td>{{.Plate}}</td>
-                            <td>{{.Contact}}</td>  
-                            <td>{{.Status}}</td> 
-                            <td>{{.CnhDocComplete}}</td>   
-                            <td>{{.RgDocComplete}}</td>                 
-                            <td><a href="edit?id={{.UserID}}" class="btn btn-info">Editar</a></td>                           
-                        </tr>
-                        {{end}}
-                    </tbody>
-                </table>
+    <div class="container bg-light">
+        <div class="card-deck">
+            <div class="card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                  </svg>
+              <div class="card-body">
+                <h5 class="card-title text-center">Editar Documentos</h5>
+                <div class="row">
+                    <div class="col text-center">
+                        <a href="index" class="btn btn-primary">Editar</a>
+                    </div>
+                </div>
+              </div>
             </div>
-        </section>
+    
+            <div class="card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+                  </svg>
+              <div class="card-body">
+                <h5 class="card-title text-center">Cadastrar Documentos</h5>
+                <div class="row">
+                    <div class="col text-center">
+                        <a href="indexSemDocs" class="btn btn-primary">Cadastrar</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
 </body>
-
 </html>
 {{end}}

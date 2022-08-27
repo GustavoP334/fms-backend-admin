@@ -1,0 +1,42 @@
+{{define "Index"}}
+
+{{template "_head"}}
+
+{{template "_menu"}}
+
+<body>
+    <div class="container">
+        <section class="card">
+            <div>
+                <table class="table table-striped table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Plate</th>
+                            <th>Contact</th>
+                            <th>Status</th>
+                            <th>CNH</th>
+                            <th>RG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{range .}}
+                        <tr>                        
+                            <td>{{.Name}}</td>
+                            <td>{{.Plate}}</td>
+                            <td>{{.Contact}}</td>  
+                            <td>{{.Status}}</td> 
+                            <td>{{.CnhDocComplete}}</td>   
+                            <td>{{.RgDocComplete}}</td>                 
+                            <td><a href="edit?id={{.UserID}}" class="btn btn-info">Editar</a></td>                           
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
+{{end}}

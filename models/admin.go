@@ -2,6 +2,8 @@ package models
 
 import (
 	DB "application-web/db"
+	"encoding/json"
+	"fmt"
 	"time"
 
 	"github.com/google/uuid"
@@ -113,6 +115,14 @@ type FieldsDocuments struct {
 	DriverBond      string `json:"driver_bond"`
 }
 
+func (f *FieldsDocuments) BeforeCreate(tx *gorm.DB) (err error) {
+
+	f.ID = uuid.New()
+
+	return
+
+}
+
 type Address struct {
 	ID        uuid.UUID      `json:"id,omitempty" gorm:"type:uuid;primary_key"`
 	CreatedAt time.Time      `json:"created_at,omitempty"`
@@ -172,11 +182,34 @@ func EditDriver(user_id string) Driver {
 	var driver Driver
 
 	err := db.Joins("FieldsDocuments").Where("user_id = ?", user_id).Find(&driver).Error
+	db.Exec("UPDATE fields")
 	if err != nil {
 		panic(err.Error())
 	}
 
+	fmt.Println(driver)
+
 	return driver
+}
+
+func CreateDocument(slice []byte) {
+	db := DB.Conn
+
+	var fields_documents FieldsDocuments
+
+	err := json.Unmarshal(slice, &fields_documents)
+	if err != nil {
+		fmt.Println("Error", err.Error())
+		return
+	}
+
+	query := db.Create(&fields_documents).Error
+	if query != nil {
+		panic(query.Error)
+		return
+	}
+
+	return
 }
 
 /*func AtualizaProduto(user_id, score int, name, plate, contact, status, cnh, rg, crlv string) {

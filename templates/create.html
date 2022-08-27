@@ -13,21 +13,13 @@
                 <p class="lead">Insira os dados para atualizar ou editar</p>
             </div>
         </div>
-        <form method="POST" action="update">
-            <input type="hidden" name="id" value="{{.UserID}}">
+        <form method="POST" action="insert" id="myForm">
+            <input type="hidden" name="driver_id" value="{{.UserID}}">
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="nome">Nome:</label>
-                        <input type="text" name="nome" class="form-control" value="{{.Name}}" >
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-8">
-                    <div class="form-group">
-                        <label for="descricao">Placa:</label>
-                        <input type="text" name="descricao" class="form-control" value="{{.Plate}}">
+                        <input type="text" name="name" class="form-control" value="{{.Name}}" >
                     </div>
                 </div>
             </div>
@@ -35,7 +27,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="preco">Contato:</label>
-                        <input type="text" name="preco" class="form-control" step="0.01" value="{{.Contact}}">
+                        <input type="text" name="contact" class="form-control" step="0.01" value="{{.Contact}}">
                     </div>
                 </div>
             </div>
@@ -44,7 +36,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">Status:</label>
-                        <input type="text" name="quantidade" class="form-control" value="{{.Status}}">
+                        <input type="text" name="status" class="form-control" value="{{.Status}}">
                     </div>
                 </div>
             </div>
@@ -53,7 +45,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">CNH:</label>
-                        <input type="text" name="quantidade" class="form-control" value="{{.CnhDocComplete}}">
+                        <input type="text" name="cnh_doc_complete" class="form-control" value="{{.CnhDocComplete}}">
                     </div>
                 </div>
             </div>
@@ -62,25 +54,191 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">RG:</label>
-                        <input type="text" name="quantidade" class="form-control" value="{{.RgDocComplete}}">
+                        <input type="text" name="rg_doc_complete" class="form-control" value="{{.RgDocComplete}}">
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
-                        <label for="quantidade">Modelo do caminhão:</label>
-                        <input type="text" name="quantidade" class="form-control">
+                        <label for="descricao">Placa:</label>
+                        <input type="text" name="car_plate" class="form-control">
                     </div>
                 </div>
             </div>
-            
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
-                        <label for="quantidade">Chassi:</label>
-                        <input type="text" name="quantidade" class="form-control">
+                        <label for="quantidade">Modelo do veículo:</label>
+                        <input type="text" name="car_model" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">Marca do veículo:</label>
+                        <input type="text" name="car_brand" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">Renavam</label>
+                        <input type="text" name="renavam" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">Chassi</label>
+                        <input type="text" name="car_chassi" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">Cor do veículo</label>
+                        <input type="text" name="car_color" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">Ano do veículo</label>
+                        <input type="text" name="car_year" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">Tipo do veículo</label>
+                        <input type="text" name="car_type" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">Capacidade do veículo</label>
+                        <input type="text" name="car_capacity" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">AnttNumber</label>
+                        <input type="text" name="antt_number" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">Dono do veículo</label>
+                        <input type="text" name="car_owner" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">CPF/CNPJ do proprietário</label>
+                        <input type="text" name="car_owner_cnpj_cpf" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">CarTelephone</label>
+                        <input type="text" name="car_telephone" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">CarCellPhone</label>
+                        <input type="text" name="car_cellphone" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">CarTypePeople</label>
+                        <input type="text" name="car_type_people" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">CarTechnology</label>
+                        <input type="text" name="car_technology" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">CarTrackerID</label>
+                        <input type="text" name="car_tracker_id" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">CarCommunication</label>
+                        <input type="text" name="car_communication" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">CarSecTechnology</label>
+                        <input type="text" name="car_sec_technology" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">CarIDTrackerSec</label>
+                        <input type="text" name="car_id_rastreador_sec" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">CarCommunicationSec</label>
+                        <input type="text" name="car_communication_sec" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">CarFixed</label>
+                        <input type="text" name="car_fixed" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="quantidade">CarBondeaaaType</label>
+                        <input type="text" name="car_bond_type" class="form-control">
                     </div>
                 </div>
             </div>
@@ -92,7 +250,6 @@
 </html>
 </div>
 </body>
-
 </html>
 
 {{end}}
