@@ -13,7 +13,7 @@
                 <p class="lead">Insira os dados para atualizar ou editar</p>
             </div>
         </div>
-        <form method="POST" action="insert" id="myForm">
+        <form method="POST" action="update" id="myForm">
             <input type="hidden" name="driver_id" value="{{.UserID}}">
             <div class="row">
                 <div class="col-sm-8">
@@ -27,7 +27,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="preco">Contato:</label>
-                        <input type="text" name="contact" class="form-control" step="0.01" value="{{.Contact}}">
+                        <input type="text" name="contact" class="form-control" value="{{.Contact}}">
                     </div>
                 </div>
             </div>
@@ -69,14 +69,8 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
-                        <label for="quantidade">Modelo do veículo:</label>
-                        {{$var :=""}}
-                        {{$te := .CarModel}}
-                        {{if $var ne $te}}
-                        <input type="text" name="car_model" class="form-control">
-                        {{else}}
-                        <input type="text" name="car_plate" class="form-control" value="{{$te}}">
-                        {{end}}
+                        <label for="descricao">Modelo do veículo:</label>                   
+                        <input type="text" name="car_model" class="form-control" value="{{.FieldsDocuments.CarModel}}">
                     </div>
                 </div>
             </div>
@@ -84,7 +78,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">Marca do veículo:</label>
-                        <input type="text" name="car_brand" class="form-control" value="{{.CarBrand}}">
+                        <input type="text" name="car_brand" class="form-control" value="{{.FieldsDocuments.CarBrand}}">
                     </div>
                 </div>
             </div>
@@ -92,7 +86,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">Renavam</label>
-                        <input type="text" name="renavam" class="form-control" value="{{.Renavam}}">
+                        <input type="text" name="renavam" class="form-control" value="{{.FieldsDocuments.Renavam}}">
                     </div>
                 </div>
             </div>
@@ -100,7 +94,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">Chassi</label>
-                        <input type="text" name="car_chassi" class="form-control" value="{{.Chassi}}">
+                        <input type="text" name="car_chassi" class="form-control" value="{{.FieldsDocuments.Chassi}}">
                     </div>
                 </div>
             </div>
@@ -108,7 +102,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">Cor do veículo</label>
-                        <input type="text" name="car_color" class="form-control" value="{{.CarColor}}">
+                        <input type="text" name="car_color" class="form-control" value="{{.FieldsDocuments.CarColor}}">
                     </div>
                 </div>
             </div>
@@ -116,7 +110,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">Ano do veículo</label>
-                        <input type="text" name="car_year" class="form-control" value="{{.CarYear}}">
+                        <input type="text" name="car_year" class="form-control" value="{{.FieldsDocuments.CarYear}}">
                     </div>
                 </div>
             </div>
@@ -124,7 +118,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">Tipo do veículo</label>
-                        <input type="text" name="car_type" class="form-control" value="{{.CarType}}">
+                        <input type="text" name="car_type" class="form-control" value="{{.FieldsDocuments.CarType}}">
                     </div>
                 </div>
             </div>
@@ -132,7 +126,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">Capacidade do veículo</label>
-                        <input type="text" name="car_capacity" class="form-control" value="{{.CarCapacity}}">
+                        <input type="text" name="car_capacity" class="form-control" value="{{.FieldsDocuments.CarCapacity}}">
                     </div>
                 </div>
             </div>
@@ -140,7 +134,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">AnttNumber</label>
-                        <input type="text" name="antt_number" class="form-control" value="{{.AnttNumber}}">
+                        <input type="text" name="antt_number" class="form-control" value="{{.FieldsDocuments.AnttNumber}}">
                     </div>
                 </div>
             </div>
@@ -148,7 +142,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">Dono do veículo</label>
-                        <input type="text" name="car_owner" class="form-control" value="{{.CarOwner}}">
+                        <input type="text" name="car_owner" class="form-control" value="{{.FieldsDocuments.CarOwner}}">
                     </div>
                 </div>
             </div>
@@ -156,7 +150,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">CPF/CNPJ do proprietário</label>
-                        <input type="text" name="car_owner_cnpj_cpf" class="form-control" value="{{.CarOwnerCnpjCpf}}">
+                        <input type="text" name="car_owner_cnpj_cpf" class="form-control" value="{{.FieldsDocuments.CarOwnerCnpjCpf}}">
                     </div>
                 </div>
             </div>
@@ -164,7 +158,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">CarTelephone</label>
-                        <input type="text" name="car_telephone" class="form-control" value="{{.CarTelephone}}">
+                        <input type="text" name="car_telephone" class="form-control" value="{{.FieldsDocuments.CarTelephone}}">
                     </div>
                 </div>
             </div>
@@ -172,7 +166,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">CarCellPhone</label>
-                        <input type="text" name="car_cellphone" class="form-control" value="{{.CarCellPhone}}">
+                        <input type="text" name="car_cellphone" class="form-control" value="{{.FieldsDocuments.CarCellPhone}}">
                     </div>
                 </div>
             </div>
@@ -180,7 +174,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">CarTypePeople</label>
-                        <input type="text" name="car_type_people" class="form-control" value="{{.CarTypePeople}}">
+                        <input type="text" name="car_type_people" class="form-control" value="{{.FieldsDocuments.CarTypePeople}}">
                     </div>
                 </div>
             </div>
@@ -188,7 +182,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">CarTechnology</label>
-                        <input type="text" name="car_technology" class="form-control" value="{{.CarTechnology}}">
+                        <input type="text" name="car_technology" class="form-control" value="{{.FieldsDocuments.CarTechnology}}">
                     </div>
                 </div>
             </div>
@@ -196,7 +190,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">CarTrackerID</label>
-                        <input type="text" name="car_tracker_id" class="form-control" value="{{.CarTrackerID}}">
+                        <input type="text" name="car_tracker_id" class="form-control" value="{{.FieldsDocuments.CarTrackerID}}">
                     </div>
                 </div>
             </div>
@@ -204,7 +198,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">CarCommunication</label>
-                        <input type="text" name="car_communication" class="form-control" value="{{.CarCommunication}}">
+                        <input type="text" name="car_communication" class="form-control" value="{{.FieldsDocuments.CarCommunication}}">
                     </div>
                 </div>
             </div>
@@ -212,7 +206,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">CarSecTechnology</label>
-                        <input type="text" name="car_sec_technology" class="form-control" value="{{.CarSecTechnology}}">
+                        <input type="text" name="car_sec_technology" class="form-control" value="{{.FieldsDocuments.CarSecTechnology}}">
                     </div>
                 </div>
             </div>
@@ -220,7 +214,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">CarIDTrackerSec</label>
-                        <input type="text" name="car_id_rastreador_sec" class="form-control" value="{{.CarIDTrackerSec}}">
+                        <input type="text" name="car_id_rastreador_sec" class="form-control" value="{{.FieldsDocuments.CarIDTrackerSec}}">
                     </div>
                 </div>
             </div>
@@ -228,7 +222,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">CarCommunicationSec</label>
-                        <input type="text" name="car_communication_sec" class="form-control" value="{{.CarCommunicationSec}}">
+                        <input type="text" name="car_communication_sec" class="form-control" value="{{.FieldsDocuments.CarCommunicationSec}}">
                     </div>
                 </div>
             </div>
@@ -236,7 +230,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">CarFixed</label>
-                        <input type="text" name="car_fixed" class="form-control" value="{{.CarFixed}}">
+                        <input type="text" name="car_fixed" class="form-control" value="{{.FieldsDocuments.CarFixed}}">
                     </div>
                 </div>
             </div>
@@ -244,7 +238,7 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label for="quantidade">CarBondType</label>
-                        <input type="text" name="car_bond_type" class="form-control" value="{{.CarBondType}}">
+                        <input type="text" name="car_bond_type" class="form-control" value="{{.FieldsDocuments.CarBondType}}">
                     </div>
                 </div>
             </div>

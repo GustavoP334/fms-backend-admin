@@ -182,7 +182,6 @@ func EditDriver(user_id string) Driver {
 	var driver Driver
 
 	err := db.Joins("FieldsDocuments").Where("user_id = ?", user_id).Find(&driver).Error
-	db.Exec("UPDATE fields")
 	if err != nil {
 		panic(err.Error())
 	}
