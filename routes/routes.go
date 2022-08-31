@@ -40,6 +40,7 @@ func CarregaRotas() {
 	http.HandleFunc("/index", basicAuth(controllers.DecisionWithDocs))
 	http.HandleFunc("/edit", basicAuth(controllers.Edit))
 	http.HandleFunc("/insert", basicAuth(controllers.Insert))
+	http.HandleFunc("/update", basicAuth(controllers.Update))
 	//http.HandleFunc("/decision", controllers.Edit)
 	//http.HandleFunc("/update", controllers.Update)
 }

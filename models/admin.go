@@ -4,6 +4,7 @@ import (
 	DB "application-web/db"
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"time"
 
 	"github.com/google/uuid"
@@ -210,15 +211,56 @@ func CreateDocument(slice []byte) {
 
 	return
 }
+func AtualizaDriver(slice []byte, user_id string) {
+	db := DB.Conn
 
-/*func AtualizaProduto(user_id, score int, name, plate, contact, status, cnh, rg, crlv string) {
-	db := db.ConectaComBancoDeDados()
+	var atualizadriver Driver
 
-	AtualizaProduto, err := db.Prepare("update produtos set nome=$1, descricao=$2, preco=$3, quantidade=$4 where id=$5")
+	err := json.Unmarshal(slice, &atualizadriver)
 	if err != nil {
-		panic(err.Error())
+		fmt.Println("Error", err.Error())
+		return
 	}
-	AtualizaProduto.Exec(nome, descricao, preco, quantidade, id)
-	defer db.Close()
+	type score_str struct {
+		score string `json:"score2"`
+	}
+	var scorestr score_str
+
+	err = json.Unmarshal(slice, &scorestr)
+	if err != nil {
+		fmt.Println("Error", err.Error())
+		return
+	}
+
+	scoreparaint, _ := strconv.Atoi(scorestr.score)
+
+	atualizadriver.Score = scoreparaint
+
+	query := db.Where("user_id= ?", user_id).Updates(&atualizadriver).Error
+	if query != nil {
+		panic(query.Error)
+		return
+	}
+
+	return
 }
-*/
+
+func AtualizaFieldsDocuments(slice []byte, driver_id string) {
+	db := DB.Conn
+
+	var fields_documents FieldsDocuments
+
+	err := json.Unmarshal(slice, &fields_documents)
+	if err != nil {
+		fmt.Println("Error", err.Error())
+		return
+	}
+
+	query := db.Where("driver_id= ?", driver_id).Updates(&fields_documents).Error
+	if query != nil {
+		panic(query.Error)
+		return
+	}
+
+	return
+}

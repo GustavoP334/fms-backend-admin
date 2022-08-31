@@ -103,31 +103,28 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", 301)
 }
 
-/*func Update(w http.ResponseWriter, r *http.Request) {
+func Update(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
-		id := r.FormValue("id")
-		nome := r.FormValue("nome")
-		descricao := r.FormValue("descricao")
-		preco := r.FormValue("preco")
-		quantidade := r.FormValue("quantidade")
-
-		idConvertidaParaInt, err := strconv.Atoi(id)
-		if err != nil {
-			log.Println("Erro na convesão do ID para int:", err)
+		r.ParseForm()
+		var allRecords = make(map[string]interface{})
+		for key, value := range r.Form {
+			allRecords[key] = value
 		}
 
-		precoConvertidoParaFloat, err := strconv.ParseFloat(preco, 64)
+		batata, err := json.Marshal(allRecords)
 		if err != nil {
-			log.Println("Erro na convesão do preço para float64:", err)
+			fmt.Println("err", err.Error())
+			return
 		}
+		userid := r.FormValue("driver_id")
+		driverid := r.FormValue("driver_id")
 
-		quantidadeConvertidaParaInt, err := strconv.Atoi(quantidade)
-		if err != nil {
-			log.Println("Erro na convesão da quantidade para int:", err)
-		}
+		batata = bytes.ReplaceAll(batata, []byte("["), []byte(""))
+		batata = bytes.ReplaceAll(batata, []byte("]"), []byte(""))
 
-		models.AtualizaProduto(idConvertidaParaInt, nome, descricao, precoConvertidoParaFloat, quantidadeConvertidaParaInt)
+		fmt.Println("teste", string(batata))
+		models.AtualizaDriver(batata, userid)
+		models.AtualizaFieldsDocuments(batata, driverid)
 	}
 	http.Redirect(w, r, "/", 301)
 }
-*/
